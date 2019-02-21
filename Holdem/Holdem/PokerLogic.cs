@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//https://www.codeproject.com/Articles/8199/Poker-logic-in-C
+
 namespace Holdem
 {
     class PokerLogic

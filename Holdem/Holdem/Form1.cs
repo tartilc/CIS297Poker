@@ -1,5 +1,4 @@
-﻿#region Using Statements
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,9 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-#endregion
-
-
+//Cards Downloaded from: http://acbl.mybigcommerce.com/52-playing-cards/
+//https://stackoverflow.com/questions/17193825/loading-picturebox-image-from-resource-file-with-path-part-3
 
 namespace Holdem
 {
