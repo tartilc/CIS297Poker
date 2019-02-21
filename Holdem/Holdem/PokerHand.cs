@@ -12,16 +12,18 @@ namespace Holdem
     {
         private Deck deck;
         private Card[] hand;
+        private int handSize;
 
-        public PokerHand(Deck deck)
+        public PokerHand(Deck deck, int handsize)
         {
             this.deck = deck;
-            this.hand = new Card[9];
+            this.handSize = handsize;
+            this.hand = new Card[handsize];
         }
 
         public void pullCards()
         {
-            for (int i = 0; i < 9; ++i)
+            for (int i = 0; i < handSize; ++i)
                 hand[i] = deck.pullCard();
         }
 
@@ -43,6 +45,7 @@ namespace Holdem
                 return hand[index];
             }
         }
+
         public void Sort()
         {
             Array.Sort(hand);

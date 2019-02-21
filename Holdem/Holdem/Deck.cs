@@ -76,11 +76,5 @@ namespace Holdem
         {
             this.shuffle(10);
         }
-
-        public void print()
-        {
-            foreach (Card c in d)
-                Console.WriteLine(c);
-        }
     }
 }

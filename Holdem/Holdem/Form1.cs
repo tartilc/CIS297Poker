@@ -16,7 +16,11 @@ namespace Holdem
     public partial class Form1 : Form
     {
         private Deck deck;
-        private PokerHand hand;
+        private PokerHand sharedHand;
+        private PokerHand computerHand;
+        private PokerHand playerHand;
+
+
 
         int balanceComp = 100;
         int balanceUser = 100;
@@ -29,7 +33,9 @@ namespace Holdem
         {
             InitializeComponent();
             deck = new Deck();
-            hand = new PokerHand(deck);
+            sharedHand = new PokerHand(deck, 5);
+            computerHand = new PokerHand(deck, 2);
+            playerHand = new PokerHand(deck, 2);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -40,20 +46,20 @@ namespace Holdem
         public void spreadCards()
         {
             deck.shuffle();
-            hand.pullCards();
+            sharedHand.pullCards();
+            computerHand.pullCards();
+            playerHand.pullCards();
 
-            shared1.Image = Image.FromFile(@"Resources\" + hand[0].ToString() + ".png");
-            shared2.Image = Image.FromFile(@"Resources\" + hand[1].ToString() + ".png");
-            shared3.Image = Image.FromFile(@"Resources\" + hand[2].ToString() + ".png");
-            shared4.Image = Image.FromFile(@"Resources\" + hand[3].ToString() + ".png");
-            shared5.Image = Image.FromFile(@"Resources\" + hand[4].ToString() + ".png");
+            shared1.Image = Image.FromFile(@"Resources\" + sharedHand[0].ToString() + ".png");
+            shared2.Image = Image.FromFile(@"Resources\" + sharedHand[1].ToString() + ".png");
+            shared3.Image = Image.FromFile(@"Resources\" + sharedHand[2].ToString() + ".png");
+            shared4.Image = Image.FromFile(@"Resources\" + sharedHand[3].ToString() + ".png");
+            shared5.Image = Image.FromFile(@"Resources\" + sharedHand[4].ToString() + ".png");
 
-            computerHole1.Image = Image.FromFile(@"Resources\" + hand[5].ToString() + ".png");
-            computerHole2.Image = Image.FromFile(@"Resources\" + hand[6].ToString() + ".png");
-            playerHole1.Image = Image.FromFile(@"Resources\" + hand[7].ToString() + ".png");
-            playerHole2.Image = Image.FromFile(@"Resources\" + hand[8].ToString() + ".png");
-
-
+            computerHole1.Image = Image.FromFile(@"Resources\" + computerHand[0].ToString() + ".png");
+            computerHole2.Image = Image.FromFile(@"Resources\" + computerHand[1].ToString() + ".png");
+            playerHole1.Image = Image.FromFile(@"Resources\" + playerHand[0].ToString() + ".png");
+            playerHole2.Image = Image.FromFile(@"Resources\" + playerHand[1].ToString() + ".png");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -83,25 +89,11 @@ namespace Holdem
                 computerBalance.Text = "Out of Money";
               
             }
-            else
-            {
-
-            }
 
             if (sumRaiseUser <= 0)
             {
                 playerBalance.Text = "Out of Money";
             }
-            else
-            {
-
-            }
-
-
-
-
-
-
 
         }
 
