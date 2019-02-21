@@ -16,6 +16,7 @@ namespace Holdem
     public partial class Form1 : Form
     {
         private Deck deck;
+        private PokerHand hand;
 
         int balanceComp = 100;
         int balanceUser = 100;
@@ -28,24 +29,37 @@ namespace Holdem
         {
             InitializeComponent();
             deck = new Deck();
+            hand = new PokerHand(deck);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Initialize();
+            spreadCards();
         }
 
-        public void Initialize()
+        public void spreadCards()
         {
-            shared1.Image = Image.FromFile(@"Resources\" + deck.pullCard().ToString() + ".png");
-            shared2.Image = Image.FromFile(@"Resources\" + deck.pullCard().ToString() + ".png");
-            shared3.Image = Image.FromFile(@"Resources\" + deck.pullCard().ToString() + ".png");
-            shared4.Image = Image.FromFile(@"Resources\" + deck.pullCard().ToString() + ".png");
-            shared5.Image = Image.FromFile(@"Resources\" + deck.pullCard().ToString() + ".png");
+            deck.shuffle();
+            hand.pullCards();
+
+            shared1.Image = Image.FromFile(@"Resources\" + hand[0].ToString() + ".png");
+            shared2.Image = Image.FromFile(@"Resources\" + hand[1].ToString() + ".png");
+            shared3.Image = Image.FromFile(@"Resources\" + hand[2].ToString() + ".png");
+            shared4.Image = Image.FromFile(@"Resources\" + hand[3].ToString() + ".png");
+            shared5.Image = Image.FromFile(@"Resources\" + hand[4].ToString() + ".png");
+
+            computerHole1.Image = Image.FromFile(@"Resources\" + hand[5].ToString() + ".png");
+            computerHole2.Image = Image.FromFile(@"Resources\" + hand[6].ToString() + ".png");
+            playerHole1.Image = Image.FromFile(@"Resources\" + hand[7].ToString() + ".png");
+            playerHole2.Image = Image.FromFile(@"Resources\" + hand[8].ToString() + ".png");
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            deck.shuffle();
+            spreadCards();
             computerBalance.Text = Convert.ToString(balanceComp);
             playerBalance.Text = Convert.ToString(balanceUser);
         }

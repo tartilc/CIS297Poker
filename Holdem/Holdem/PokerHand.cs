@@ -16,12 +16,12 @@ namespace Holdem
         public PokerHand(Deck deck)
         {
             this.deck = deck;
-            this.hand = new Card[5];
+            this.hand = new Card[9];
         }
 
         public void pullCards()
         {
-            for (int i = 0; i < 5; ++i)
+            for (int i = 0; i < 9; ++i)
                 hand[i] = deck.pullCard();
         }
 
